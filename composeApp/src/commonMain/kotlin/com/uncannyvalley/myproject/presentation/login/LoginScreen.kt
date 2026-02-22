@@ -1,6 +1,5 @@
 package com.uncannyvalley.myproject.presentation.login
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -33,9 +32,7 @@ fun LoginScreen() {
     val passwordState = rememberTextFieldState()
 
     Scaffold(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+        modifier = Modifier.fillMaxSize()
     ) { padding ->
 
         Box(
