@@ -1,9 +1,11 @@
 package com.uncannyvalley.myproject.presentation.login
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,6 +15,7 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -37,68 +40,68 @@ fun LoginScreen() {
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
-            .imePadding()
             .background(MaterialTheme.colorScheme.background)
     ) { padding ->
 
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .widthIn(max = 200.dp)
-                .padding(padding),
+            modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxHeight()
+                    .padding(padding)
+                    .imePadding()
                     .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 20.dp),
+                    .padding(20.dp)
+                    .widthIn(max = 400.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Column(
-                    modifier = Modifier.weight(1f),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Spacer(modifier = Modifier.height(48.dp))
+                Spacer(modifier = Modifier.weight(0.3f))
 
-                    Text(
-                        text = "Login",
-                        style = MaterialTheme.typography.titleLarge,
-                        color = MaterialTheme.colorScheme.onBackground
-                    )
+                Text(
+                    text = "Login",
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
 
-                    Spacer(modifier = Modifier.height(52.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
-                    OutlinedTextField(
-                        modifier = Modifier.fillMaxWidth(),
-                        state = emailState,
-                        placeholder = { Text("Email") },
-                        shape = RoundedCornerShape(10.dp),
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Email,
-                            imeAction = ImeAction.Next
-                        ),
-                    )
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    state = emailState,
+                    placeholder = { Text("Email") },
+                    shape = RoundedCornerShape(10.dp),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Email,
+                        imeAction = ImeAction.Next
+                    ),
+                )
 
-                    Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                    OutlinedTextField(
-                        modifier = Modifier.fillMaxWidth(),
-                        state = passwordState,
-                        placeholder = { Text("Password") },
-                        shape = RoundedCornerShape(10.dp),
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Password,
-                            imeAction = ImeAction.Done
-                        ),
-                    )
-                }
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    state = passwordState,
+                    placeholder = { Text("Password") },
+                    shape = RoundedCornerShape(10.dp),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Password,
+                        imeAction = ImeAction.Done
+                    ),
+                )
+
+                Spacer(modifier = Modifier.weight(0.7f))  // pushes button down
 
                 PrimaryButton(
+                    modifier = Modifier.fillMaxWidth(),
                     text = "Login",
                     onClick = {}
                 )
+
+                Text(text = "Skip")
+
+                Spacer(modifier = Modifier.height(8.dp))
             }
         }
     }
