@@ -10,14 +10,18 @@ private val DarkColorScheme = darkColorScheme(
     primary = Yellow,
     onPrimary = Onyx,
     background = Onyx,
-    onBackground = White
+    onBackground = White,
+    outline = White,
+    outlineVariant = Onyx
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = ElectricLime,
     onPrimary = Onyx,
     background = White,
-    onBackground = Onyx
+    onBackground = Onyx,
+    outline = Onyx,
+    outlineVariant = Onyx
 )
 
 @Composable
