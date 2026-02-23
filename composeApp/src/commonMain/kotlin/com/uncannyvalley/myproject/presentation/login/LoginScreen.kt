@@ -11,12 +11,15 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,8 +31,8 @@ import com.uncannyvalley.myproject.presentation.theme.MyAppTheme
 
 @Composable
 fun LoginScreen() {
-    val emailState = rememberTextFieldState()
-    val passwordState = rememberTextFieldState()
+    var email by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
 
     Scaffold(
         modifier = Modifier.fillMaxSize()
@@ -59,11 +62,17 @@ fun LoginScreen() {
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                EmailField(emailState)
+                EmailField(
+                    value = email,
+                    onValueChange = { email = it }
+                )
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                PasswordField(passwordState)
+                PasswordField(
+                    value = password,
+                    onValueChange = { password = it }
+                )
 
                 Spacer(modifier = Modifier.weight(0.7f))  // pushes button down
 

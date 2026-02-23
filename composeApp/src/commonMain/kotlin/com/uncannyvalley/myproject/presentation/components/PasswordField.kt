@@ -14,7 +14,14 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun PasswordField(state: TextFieldState) {
+fun PasswordField(
+    value: String,
+    onValueChange: (String) -> Unit
+) {
     OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        placeholder = { Text("Password") },
         modifier = Modifier.fillMaxWidth(),
         state = state,
         placeholder = { Text("Password") },
