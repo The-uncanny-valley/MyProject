@@ -25,6 +25,7 @@ fun EmailField(
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Email,
             imeAction = ImeAction.Next
-        )
+        ),
+        singleLine = true
     )
 }
