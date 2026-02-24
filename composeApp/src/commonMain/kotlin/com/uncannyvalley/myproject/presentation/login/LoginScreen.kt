@@ -74,6 +74,8 @@ fun LoginScreen() {
                     onValueChange = { password = it }
                 )
 
+                Spacer(modifier = Modifier.height(20.dp))
+
                 Spacer(modifier = Modifier.weight(0.7f))  // pushes button down
 
                 PrimaryButton(
@@ -82,9 +84,9 @@ fun LoginScreen() {
                     onClick = {}
                 )
 
-                Text(text = "Skip")
+                Spacer(modifier = Modifier.height(12.dp))
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Text(text = "Skip")
             }
         }
     }

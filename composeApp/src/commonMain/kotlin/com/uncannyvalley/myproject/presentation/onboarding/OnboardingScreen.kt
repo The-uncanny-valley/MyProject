@@ -48,24 +48,22 @@ fun OnboardingScreen(
                     .height(200.dp)
             )
 
-            Spacer(modifier = Modifier.height(18.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             Text(
                 text = "Welcome to my app!",
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.fillMaxWidth()
             )
-
-            Spacer(modifier = Modifier.height(8.dp))
 
             Text(
                 text = "Just because you're trash doesn't mean you can't do great things. It's called garbage can, not garbage cannot.",
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onBackground,
-                modifier = Modifier.fillMaxWidth().padding(24.dp)
+                modifier = Modifier.fillMaxWidth().padding(28.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp)) // gap before button

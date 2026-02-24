@@ -1,7 +1,6 @@
 package com.uncannyvalley.myproject.presentation.components
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -25,10 +24,8 @@ fun PrimaryButton(
     Button(
         onClick = onClick,
         enabled = isEnabled,
-        modifier = modifier
-            .padding(vertical = 16.dp)
-            .height(54.dp),
-        shape = RoundedCornerShape(25.dp),
+        modifier = modifier,
+        shape = RoundedCornerShape(28.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
             disabledContainerColor = Color.Transparent,
@@ -43,8 +40,9 @@ fun PrimaryButton(
             )
     ) {
         Text(
+            modifier = Modifier.padding(vertical = 8.dp, horizontal = 18.dp),
             text = text.uppercase(),
-            style = MaterialTheme.typography.labelLarge
+            style = MaterialTheme.typography.labelMedium
         )
     }
 }
