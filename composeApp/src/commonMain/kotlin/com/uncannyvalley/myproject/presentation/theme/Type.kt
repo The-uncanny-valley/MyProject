@@ -39,6 +39,13 @@ fun typography(): Typography {
             letterSpacing = 0.sp
         ),
 
+        titleLarge = TextStyle(
+            fontFamily = robotoMono,
+            fontWeight = FontWeight.Medium,
+            fontSize = 24.sp,
+            letterSpacing = 0.sp
+        ),
+
         labelMedium = TextStyle(
             fontFamily = inter,
             fontWeight = FontWeight.SemiBold,
