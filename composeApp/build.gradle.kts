@@ -34,7 +34,7 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
 
-            implementation("io.coil-kt:coil-compose:2.7.0")
+            implementation(libs.coil.compose)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
