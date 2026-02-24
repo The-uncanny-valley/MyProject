@@ -35,6 +35,7 @@ fun LandscapeLayout(
         Column(
             modifier = Modifier
                 .weight(1f)
+                .fillMaxHeight()
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
