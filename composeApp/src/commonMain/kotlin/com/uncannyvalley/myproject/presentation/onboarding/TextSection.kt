@@ -9,11 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import myproject.composeapp.generated.resources.Res
+import myproject.composeapp.generated.resources.onboarding_text
+import myproject.composeapp.generated.resources.onboarding_title
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun TextSection() {
     Text(
-        text = "Welcome to my app!",
+        text = stringResource(Res.string.onboarding_title),
         style = MaterialTheme.typography.titleLarge,
         color = MaterialTheme.colorScheme.onBackground,
         textAlign = TextAlign.Center
@@ -22,7 +26,7 @@ fun TextSection() {
     Spacer(modifier = Modifier.height(28.dp))
 
     Text(
-        text = "Just because you're trash doesn't mean you can't do great things. It's called garbage can, not garbage cannot.",
+        text = stringResource(Res.string.onboarding_text),
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurface,
         textAlign = TextAlign.Center,

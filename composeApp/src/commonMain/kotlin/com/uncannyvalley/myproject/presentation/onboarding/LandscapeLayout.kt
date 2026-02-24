@@ -14,6 +14,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.uncannyvalley.myproject.presentation.components.PrimaryButton
+import myproject.composeapp.generated.resources.Res
+import myproject.composeapp.generated.resources.onboarding_get_started_btn
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun LandscapeLayout(
@@ -43,7 +46,7 @@ fun LandscapeLayout(
 
             PrimaryButton(
                 isEnabled = true,
-                text = "Get started",
+                text = stringResource(Res.string.onboarding_get_started_btn),
                 onClick = onGetStartedClick
             )
         }

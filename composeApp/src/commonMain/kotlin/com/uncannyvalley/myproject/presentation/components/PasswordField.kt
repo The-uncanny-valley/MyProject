@@ -24,7 +24,11 @@ import androidx.compose.ui.unit.dp
 import myproject.composeapp.generated.resources.Res
 import myproject.composeapp.generated.resources.ic_visibility_off
 import myproject.composeapp.generated.resources.ic_visibility_on
+import myproject.composeapp.generated.resources.login_hide_password_btn
+import myproject.composeapp.generated.resources.login_password_placeholder
+import myproject.composeapp.generated.resources.login_show_password_btn
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun PasswordField(
@@ -36,7 +40,7 @@ fun PasswordField(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text("Password") },
+        placeholder = { Text(stringResource(Res.string.login_password_placeholder)) },
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(10.dp),
 
@@ -60,8 +64,9 @@ fun PasswordField(
                         if (passwordVisible) Res.drawable.ic_visibility_on
                         else Res.drawable.ic_visibility_off
                     ),
-                    contentDescription = if (passwordVisible) "Hide password"
-                    else "Show password",
+                    contentDescription = if (passwordVisible)
+                        stringResource(Res.string.login_hide_password_btn)
+                    else stringResource(Res.string.login_show_password_btn),
                     tint = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.size(24.dp)
                 )

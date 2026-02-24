@@ -28,6 +28,11 @@ import com.uncannyvalley.myproject.presentation.components.EmailField
 import com.uncannyvalley.myproject.presentation.components.PasswordField
 import com.uncannyvalley.myproject.presentation.components.PrimaryButton
 import com.uncannyvalley.myproject.presentation.theme.MyAppTheme
+import myproject.composeapp.generated.resources.Res
+import myproject.composeapp.generated.resources.login_btn
+import myproject.composeapp.generated.resources.login_title
+import myproject.composeapp.generated.resources.skip_btn
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun LoginScreen() {
@@ -55,7 +60,7 @@ fun LoginScreen() {
                 Spacer(modifier = Modifier.weight(0.3f))
 
                 Text(
-                    text = "Login",
+                    text = stringResource(Res.string.login_title),
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onBackground
                 )
@@ -80,13 +85,13 @@ fun LoginScreen() {
 
                 PrimaryButton(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Login",
+                    text = stringResource(Res.string.login_btn),
                     onClick = {}
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                Text(text = "Skip")
+                Text(text = stringResource(Res.string.skip_btn))
             }
         }
     }
