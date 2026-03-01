@@ -49,8 +49,8 @@ kotlin {
             implementation(libs.kotlinx.serialization.core)
 
             // Coil
-            implementation("io.coil-kt.coil3:coil-compose:3.4.0")
-            implementation("io.coil-kt.coil3:coil-network-okhttp:3.4.0")
+            implementation(libs.coil3.coil.compose)
+            implementation(libs.coil.network.okhttp)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
