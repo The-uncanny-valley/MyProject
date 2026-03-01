@@ -63,11 +63,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.uncannyvalley.myproject"
+    namespace = "com.uncannyvalley.repowave"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.uncannyvalley.myproject"
+        applicationId = "com.uncannyvalley.repowave"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
