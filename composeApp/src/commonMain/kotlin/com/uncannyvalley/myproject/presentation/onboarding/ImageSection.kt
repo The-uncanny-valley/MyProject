@@ -2,15 +2,22 @@ package com.uncannyvalley.myproject.presentation.onboarding
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.uncannyvalley.myproject.ImageLoader
+import androidx.compose.ui.layout.ContentScale
+import coil3.compose.AsyncImage
+import myproject.composeapp.generated.resources.Res
+import myproject.composeapp.generated.resources.placeholder
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun ImageSection(modifier: Modifier) {
-    val imageLoader = ImageLoader()
+fun ImageSection(modifier: Modifier = Modifier) {
 
-    imageLoader.LoadImage(
-        url = "https://raw.githubusercontent.com/The-uncanny-valley/Images/main/meme.jpeg",
+    AsyncImage(
+        model = "https://raw.githubusercontent.com/The-uncanny-valley/Images/main/meme.jpeg",
         contentDescription = "Onboarding meme",
-        modifier = modifier
+        modifier = modifier,
+        contentScale = ContentScale.Fit,
+
+        placeholder = painterResource(Res.drawable.placeholder),
+        error = painterResource(Res.drawable.placeholder)
     )
 }

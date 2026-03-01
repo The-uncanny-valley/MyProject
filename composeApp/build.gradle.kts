@@ -33,8 +33,6 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
-
-            implementation(libs.coil.compose)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -49,6 +47,10 @@ kotlin {
             // navigation
             implementation(libs.navigation.compose)
             implementation(libs.kotlinx.serialization.core)
+
+            // Coil
+            implementation("io.coil-kt.coil3:coil-compose:3.4.0")
+            implementation("io.coil-kt.coil3:coil-network-okhttp:3.4.0")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
