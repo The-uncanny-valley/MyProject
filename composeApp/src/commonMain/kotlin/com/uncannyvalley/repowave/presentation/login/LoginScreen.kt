@@ -68,6 +68,7 @@ fun LoginScreen() {
                 EmailField(
                     value = email,
                     onValueChange = { email = it }
+                UsernameField(
                 )
 
                 Spacer(modifier = Modifier.height(20.dp))
