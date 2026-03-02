@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding -->
+    <string name="onboarding_title">Welcome to my app!</string>
+    <string name="onboarding_text">Just because you're trash doesn't mean you can't do great things. It's called garbage can, not garbage cannot.</string>
+    <string name="onboarding_get_started_btn">Get started</string>
+
+    <!-- Login screen -->
+    <string name="login_title">Login</string>
+
+    <string name="login_email_placeholder">Email</string>
+    <string name="login_password_placeholder">Password</string>
+    <string name="login_show_password_btn">Show password</string>
+    <string name="login_hide_password_btn">Hide password</string>
+
+    <string name="login_btn">Login</string>
+    <string name="skip_btn">Skip</string>
+</resources>

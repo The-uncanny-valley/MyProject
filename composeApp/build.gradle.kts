@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -32,6 +33,8 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
+
+            implementation(libs.coil.network.okhttp)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -42,6 +45,13 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            // navigation
+            implementation(libs.navigation.compose)
+            implementation(libs.kotlinx.serialization.core)
+
+            // Coil
+            implementation(libs.coil3.coil.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -54,11 +64,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.uncannyvalley.myproject"
+    namespace = "com.uncannyvalley.repowave"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.uncannyvalley.myproject"
+        applicationId = "com.uncannyvalley.repowave"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
