@@ -32,12 +32,11 @@ fun PrimaryButton(
             contentColor = MaterialTheme.colorScheme.onPrimary,
             disabledContentColor = MaterialTheme.colorScheme.onBackground
         ),
-        border =
-            BorderStroke(
-                width = 1.dp,
-                color = if (isEnabled) MaterialTheme.colorScheme.outlineVariant
-                else MaterialTheme.colorScheme.outline
-            )
+        border = BorderStroke(
+            width = 1.dp,
+            color = if (isEnabled) MaterialTheme.colorScheme.outlineVariant
+            else MaterialTheme.colorScheme.outline
+        )
     ) {
         Text(
             modifier = Modifier.padding(vertical = 8.dp, horizontal = 18.dp),
