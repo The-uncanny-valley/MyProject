@@ -7,3 +7,6 @@ object Onboarding
 
 @Serializable
 object Login
+
+@Serializable
+object Main

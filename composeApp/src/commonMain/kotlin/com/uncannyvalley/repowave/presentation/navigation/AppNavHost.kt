@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.uncannyvalley.repowave.presentation.login.LoginScreen
+import com.uncannyvalley.repowave.presentation.main.MainScreen
 import com.uncannyvalley.repowave.presentation.onboarding.OnboardingScreen
 
 @Composable
@@ -32,7 +33,19 @@ fun AppNavHost(
         }
 
         composable<Login> {
-            LoginScreen()
+            LoginScreen(
+                onLoginSuccess = {
+                    navController.navigate(Main) {
+                        popUpTo(Login) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
+        composable<Main> {
+            MainScreen()
         }
     }
 }
