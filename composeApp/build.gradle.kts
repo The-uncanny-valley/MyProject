@@ -33,6 +33,8 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
+
+            implementation(libs.coil.network.okhttp)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -50,7 +52,6 @@ kotlin {
 
             // Coil
             implementation(libs.coil3.coil.compose)
-            implementation(libs.coil.network.okhttp)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
