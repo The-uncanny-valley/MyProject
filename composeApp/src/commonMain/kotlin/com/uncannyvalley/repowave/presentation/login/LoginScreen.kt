@@ -22,12 +22,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.uncannyvalley.repowave.presentation.components.EmailField
 import com.uncannyvalley.repowave.presentation.components.PasswordField
 import com.uncannyvalley.repowave.presentation.components.PrimaryButton
-import com.uncannyvalley.repowave.presentation.theme.RepoWaveTheme
 import myproject.composeapp.generated.resources.Res
 import myproject.composeapp.generated.resources.login_btn
 import myproject.composeapp.generated.resources.login_title
@@ -94,29 +92,5 @@ fun LoginScreen() {
                 Text(text = stringResource(Res.string.skip_btn))
             }
         }
-    }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun LoginScreen_Preview() {
-    RepoWaveTheme { LoginScreen() }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun LoginScreen_Preview_Dark() {
-    RepoWaveTheme(darkTheme = true) { LoginScreen() }
-}
-
-@Preview(
-    showSystemUi = false,
-    device = "spec:width=1280dp,height=800dp,dpi=240",
-    showBackground = true
-)
-@Composable
-fun LoginScreen_Preview_Tablet_Landscape() {
-    RepoWaveTheme {
-        LoginScreen()
     }
 }
