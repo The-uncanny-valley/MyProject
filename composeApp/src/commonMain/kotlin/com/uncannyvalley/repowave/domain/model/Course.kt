@@ -7,5 +7,7 @@ data class Course(
     val author: String,
     val price: Double,
     val rating: Double,
+    val hours: Int,
+    val students: Int,
     val coverUrl: String?
 )
