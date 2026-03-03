@@ -27,7 +27,11 @@ fun AppNavHost(
         composable<Onboarding> {
             OnboardingScreen(
                 onGetStartedClick = {
-                    navController.navigate(Login)
+                    navController.navigate(Login) {
+                        popUpTo(Onboarding) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
