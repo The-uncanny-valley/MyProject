@@ -11,7 +11,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -49,6 +49,9 @@ fun MainScreen(
             key = { it.id }
         ) { course ->
 
+            val onFavoriteClick = remember(course.id) {
+                { coursesViewModel.toggleFavorite(course.id) }
+            }
             CourseCard(
                 modifier = Modifier.fillMaxWidth(),
                 title = course.title,
@@ -59,7 +62,7 @@ fun MainScreen(
                 price = course.price,
                 imagePainter = painterResource(Res.drawable.course_cover_example),
                 isFavorite = coursesViewModel.isFavorite(course.id),
-                onFavoriteClick = { coursesViewModel.toggleFavorite(course.id) }
+                onFavoriteClick = onFavoriteClick
             )
         }
     }
