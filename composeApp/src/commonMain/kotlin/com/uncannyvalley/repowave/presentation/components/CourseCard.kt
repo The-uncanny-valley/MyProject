@@ -101,14 +101,16 @@ fun CourseCard(
                 Text(
                     text = title,
                     style = MaterialTheme.typography.titleMedium,
-                    maxLines = 1
+                    maxLines = 2
                 )
+
+                Spacer(modifier = Modifier.height(6.dp))
 
                 Text(
                     text = author,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onBackground,
-                    maxLines = 1
+                    maxLines = 2
                 )
 
                 Spacer(modifier = Modifier.weight(1f))
