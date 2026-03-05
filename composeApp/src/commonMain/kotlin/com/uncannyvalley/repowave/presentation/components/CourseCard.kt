@@ -60,9 +60,7 @@ fun CourseCard(
     val strokeWidth = 1.5.dp
 
     Card(
-        modifier = modifier
-            .width(355.dp)
-            .height(198.dp)
+        modifier = modifier.height(198.dp)
             .drawWithContent {
                 drawContent()
 

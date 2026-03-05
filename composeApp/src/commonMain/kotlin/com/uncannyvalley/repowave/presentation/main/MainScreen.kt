@@ -1,12 +1,13 @@
 package com.uncannyvalley.repowave.presentation.main
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,23 +24,24 @@ import org.jetbrains.compose.resources.painterResource
 fun MainScreen(
     coursesViewModel: CoursesViewModel = viewModel()
 ) {
-    LazyColumn(
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        contentPadding = PaddingValues(bottom = 24.dp),
+    LazyVerticalGrid(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 28.dp)
+            .padding(32.dp),
+        columns = GridCells.Adaptive(340.dp),
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+        horizontalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         item(
-            key = "header"
+            key = "header",
+            span = { GridItemSpan(maxLineSpan) }
         ) {
             // title
             Text(
                 text = "New Courses",
                 style = MaterialTheme.typography.headlineSmall,
                 color = MaterialTheme.colorScheme.onBackground,
-                modifier = Modifier.padding(top = 52.dp, bottom = 12.dp)
+                modifier = Modifier.padding(vertical = 8.dp)
             )
         }
         items(
@@ -48,6 +50,7 @@ fun MainScreen(
         ) { course ->
 
             CourseCard(
+                modifier = Modifier.fillMaxWidth(),
                 title = course.title,
                 author = course.author,
                 rating = course.rating,
