@@ -23,42 +23,41 @@ import org.jetbrains.compose.resources.painterResource
 fun MainScreen(
     coursesViewModel: CoursesViewModel = viewModel()
 ) {
-    Column(
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        contentPadding = PaddingValues(bottom = 24.dp),
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 28.dp)
     ) {
-        // title
-        Text(
-            text = "New Courses",
-            style = MaterialTheme.typography.headlineSmall,
-            color = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.padding(top = 52.dp, bottom = 26.dp)
-        )
-
-        // course list
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            contentPadding = PaddingValues(bottom = 24.dp)
+        item(
+            key = "header"
         ) {
-            items(
-                items = coursesViewModel.courses,
-                key = { it.id }
-            ) { course ->
+            // title
+            Text(
+                text = "New Courses",
+                style = MaterialTheme.typography.headlineSmall,
+                color = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.padding(top = 52.dp, bottom = 12.dp)
+            )
+        }
+        items(
+            items = coursesViewModel.courses,
+            key = { it.id }
+        ) { course ->
 
-                CourseCard(
-                    title = course.title,
-                    author = course.author,
-                    rating = course.rating,
-                    students = course.students,
-                    hours = course.hours,
-                    price = course.price,
-                    imagePainter = painterResource(Res.drawable.course_cover_example),
-                    isFavorite = coursesViewModel.isFavorite(course.id),
-                    onFavoriteClick = { coursesViewModel.toggleFavorite(course.id) }
-                )
-            }
+            CourseCard(
+                title = course.title,
+                author = course.author,
+                rating = course.rating,
+                students = course.students,
+                hours = course.hours,
+                price = course.price,
+                imagePainter = painterResource(Res.drawable.course_cover_example),
+                isFavorite = coursesViewModel.isFavorite(course.id),
+                onFavoriteClick = { coursesViewModel.toggleFavorite(course.id) }
+            )
         }
     }
 }
