@@ -16,26 +16,35 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.uncannyvalley.repowave.presentation.components.EmailField
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.uncannyvalley.repowave.presentation.components.PasswordField
 import com.uncannyvalley.repowave.presentation.components.PrimaryButton
+import com.uncannyvalley.repowave.presentation.components.UsernameField
 import myproject.composeapp.generated.resources.Res
 import myproject.composeapp.generated.resources.login_btn
 import myproject.composeapp.generated.resources.login_title
-import myproject.composeapp.generated.resources.skip_btn
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun LoginScreen() {
-    var email by rememberSaveable { mutableStateOf("") }
-    var password by rememberSaveable { mutableStateOf("") }
+fun LoginScreen(
+    viewModel: LoginViewModel = viewModel(),
+    onLoginSuccess: () -> Unit
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    LaunchedEffect(Unit) {
+        viewModel.events.collect { event ->
+            when (event) {
+                is LoginUiEvent.LoginSuccessEvent -> onLoginSuccess()
+            }
+        }
+    }
 
     Scaffold(
         modifier = Modifier.fillMaxSize()
@@ -65,16 +74,16 @@ fun LoginScreen() {
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                EmailField(
-                    value = email,
-                    onValueChange = { email = it }
+                UsernameField(
+                    value = state.username,
+                    onValueChange = viewModel::onUsernameChanged
                 )
 
                 Spacer(modifier = Modifier.height(20.dp))
 
                 PasswordField(
-                    value = password,
-                    onValueChange = { password = it }
+                    value = state.password,
+                    onValueChange = viewModel::onPasswordChanged
                 )
 
                 Spacer(modifier = Modifier.height(20.dp))
@@ -84,12 +93,11 @@ fun LoginScreen() {
                 PrimaryButton(
                     modifier = Modifier.fillMaxWidth(),
                     text = stringResource(Res.string.login_btn),
-                    onClick = {}
+                    isEnabled = state.isLoginButtonActive,
+                    onClick = viewModel::onLoginClicked
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
-
-                Text(text = stringResource(Res.string.skip_btn))
             }
         }
     }

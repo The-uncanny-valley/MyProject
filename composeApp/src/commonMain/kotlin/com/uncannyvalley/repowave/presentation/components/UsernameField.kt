@@ -11,11 +11,11 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import myproject.composeapp.generated.resources.Res
-import myproject.composeapp.generated.resources.login_email_placeholder
+import myproject.composeapp.generated.resources.login_username_placeholder
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun EmailField(
+fun UsernameField(
     value: String,
     onValueChange: (String) -> Unit
 ) {
@@ -23,7 +23,7 @@ fun EmailField(
         modifier = Modifier.fillMaxWidth(),
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text(stringResource(Res.string.login_email_placeholder)) },
+        placeholder = { Text(stringResource(Res.string.login_username_placeholder)) },
         shape = RoundedCornerShape(10.dp),
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Email,
