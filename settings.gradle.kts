@@ -1,4 +1,4 @@
-rootProject.name = "MyProject"
+rootProject.name = "CourseEngine"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
