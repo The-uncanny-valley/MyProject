@@ -71,7 +71,7 @@ fun MainScreen(
                         hours = course.hours,
                         price = course.price,
                         imagePainter = painterResource(Res.drawable.course_cover_example),
-                        isFavorite = coursesViewModel.isFavorite(course.id),
+                        isFavorite = uiState.isFavorite(course.id),
                         onFavoriteClick = onFavoriteClick
                     )
                 }

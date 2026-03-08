@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uncannyvalley.coursengine.main.data.CourseRepositoryImpl
-import com.uncannyvalley.coursengine.main.domain.Course
 import com.uncannyvalley.coursengine.main.domain.CoursesRepository
 import kotlinx.coroutines.launch
 
@@ -17,12 +16,6 @@ class CoursesViewModel(
     var uiState by mutableStateOf(CoursesUiState())
         private set
 
-    var courses by mutableStateOf<List<Course>>(emptyList())
-        private set
-
-    var favorites by mutableStateOf<Set<Int>>(emptySet())
-        private set
-
     init {
         loadCourses()
     }
@@ -31,9 +24,6 @@ class CoursesViewModel(
         viewModelScope.launch {
             uiState = uiState.copy(isLoading = true)
             val result = repository.getCourses()
-            result.getOrNull()?.let {
-                courses = it
-            }
             uiState = uiState.copy(
                 courses = result.getOrNull() ?: emptyList(),
                 isLoading = false
@@ -50,6 +40,4 @@ class CoursesViewModel(
         }
         uiState = uiState.copy(favorites = newFavorites)
     }
-
-    fun isFavorite(courseId: Int): Boolean = uiState.favorites.contains(courseId)
 }

@@ -8,3 +8,5 @@ data class CoursesUiState(
     val isLoading: Boolean = false,
     val searchQuery: String = ""
 )
+
+fun CoursesUiState.isFavorite(courseId: Int): Boolean = favorites.contains(courseId)
