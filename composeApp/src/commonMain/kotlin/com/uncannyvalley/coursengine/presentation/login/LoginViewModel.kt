@@ -1,16 +1,15 @@
 package com.uncannyvalley.coursengine.presentation.login
 
-import kotlinx.coroutines.launch
 import androidx.lifecycle.viewModelScope
 import com.uncannyvalley.coursengine.data.LoginRepositoryImpl
-import com.uncannyvalley.coursengine.domain.LoginRepository
 import com.uncannyvalley.coursengine.presentation.BaseViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 
-class LoginViewModel : BaseViewModel<LoginUiState>(LoginUiState()) {
-
-    private val loginRepository: LoginRepository = LoginRepositoryImpl()
+class LoginViewModel(
+    private val loginUseCase: LoginUseCase = LoginUseCase(LoginRepositoryImpl())
+) : BaseViewModel<LoginUiState>(LoginUiState()) {
 
     private val _events = MutableSharedFlow<LoginUiEvent>()
     val events = _events.asSharedFlow()
@@ -20,7 +19,7 @@ class LoginViewModel : BaseViewModel<LoginUiState>(LoginUiState()) {
 
             val currentState = state.value
 
-            val result = loginRepository.login(
+            val result = loginUseCase(
                 currentState.username,
                 currentState.password
             )
