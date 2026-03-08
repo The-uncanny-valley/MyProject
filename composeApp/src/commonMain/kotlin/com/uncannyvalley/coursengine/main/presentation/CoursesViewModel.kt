@@ -14,6 +14,9 @@ class CoursesViewModel(
     private val repository: CoursesRepository = CourseRepositoryImpl()
 ) : ViewModel() {
 
+    var uiState by mutableStateOf(CoursesUiState())
+        private set
+
     var courses by mutableStateOf<List<Course>>(emptyList())
         private set
 
@@ -26,20 +29,27 @@ class CoursesViewModel(
 
     private fun loadCourses() {
         viewModelScope.launch {
+            uiState = uiState.copy(isLoading = true)
             val result = repository.getCourses()
             result.getOrNull()?.let {
                 courses = it
             }
+            uiState = uiState.copy(
+                courses = result.getOrNull() ?: emptyList(),
+                isLoading = false
+            )
         }
     }
 
     fun toggleFavorite(courseId: Int) {
-        favorites = if (favorites.contains(courseId)) {
-            favorites - courseId
+        val currentFavorites = uiState.favorites
+        val newFavorites = if (currentFavorites.contains(courseId)) {
+            currentFavorites - courseId
         } else {
-            favorites + courseId
+            currentFavorites + courseId
         }
+        uiState = uiState.copy(favorites = newFavorites)
     }
 
-    fun isFavorite(courseId: Int): Boolean = favorites.contains(courseId)
+    fun isFavorite(courseId: Int): Boolean = uiState.favorites.contains(courseId)
 }

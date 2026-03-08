@@ -28,6 +28,8 @@ import org.jetbrains.compose.resources.painterResource
 fun MainScreen(
     coursesViewModel: CoursesViewModel = viewModel()
 ) {
+    val uiState = coursesViewModel.uiState
+
     Scaffold { padding ->
         Box(
             modifier = Modifier
@@ -54,7 +56,7 @@ fun MainScreen(
                     )
                 }
                 items(
-                    items = coursesViewModel.courses,
+                    items = uiState.courses,
                     key = { it.id }
                 ) { course ->
                     val onFavoriteClick = remember(course.id) {
