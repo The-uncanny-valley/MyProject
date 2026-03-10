@@ -35,7 +35,7 @@ fun typography(): Typography {
         titleMedium = TextStyle(
             fontFamily = robotoMono,
             fontWeight = FontWeight.Medium,
-            fontSize = 18.sp,
+            fontSize = 15.sp,
             letterSpacing = 0.sp
         ),
 
