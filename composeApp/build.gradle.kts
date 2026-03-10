@@ -112,11 +112,11 @@ dependencies {
 
 compose.desktop {
     application {
-        mainClass = "com.uncannyvalley.myproject.MainKt"
+        mainClass = "com.uncannyvalley.coursengine.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.uncannyvalley.myproject"
+            packageName = "com.uncannyvalley.coursengine"
             packageVersion = "1.0.0"
         }
     }
