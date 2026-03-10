@@ -1,79 +1,41 @@
 package com.uncannyvalley.coursengine.main.data
 
+import com.uncannyvalley.coursengine.data.network.NetworkClient
 import com.uncannyvalley.coursengine.main.domain.Course
 import com.uncannyvalley.coursengine.main.domain.CoursesRepository
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 
 class CourseRepositoryImpl : CoursesRepository {
     override suspend fun getCourses(): Result<List<Course>> {
-        return Result.success(
-            listOf(
+        return try {
+            val response: StepikResponse = NetworkClient.httpClient.get("https://stepik.org/api/courses") {
+                parameter("is_public", "true")
+                parameter("order", "-id")
+            }.body()
+
+            val domainCourses = response.courses.map { dto ->
                 Course(
-                    id = 1,
-                    title = "Linear Algebra",
-                    summary = "Learn Algebra.",
-                    coverUrl = null,
-                    author = "Computer Science Center",
-                    price = 800.0,
-                    rating = 4.2,
-                    hours = 8,
-                    students = 1201
-                ),
-                Course(
-                    id = 2,
-                    title = "English for IT & Computer Science",
-                    summary = "Learn English",
-                    coverUrl = null,
-                    author = "A. Andreeva",
-                    price = 300.0,
-                    rating = 4.6,
-                    hours = 5,
-                    students = 289
-                ),
-                Course(
-                    id = 3,
-                    title = "PRO SQL",
-                    summary = "Master problem solving.",
-                    coverUrl = null,
-                    author = "Иосиф Дзеранов",
-                    price = 8900.0,
-                    rating = 5.0,
-                    hours = 120,
-                    students = 1678
-                ),
-                Course(
-                    id = 4,
-                    title = "PRO SQL2",
-                    summary = "Master problem solving.",
-                    coverUrl = null,
-                    author = "Иосиф Дзеранов",
-                    price = 8900.0,
-                    rating = 5.0,
-                    hours = 120,
-                    students = 1678
-                ),
-                Course(
-                    id = 5,
-                    title = "PRO SQL3",
-                    summary = "Master problem solving.",
-                    coverUrl = null,
-                    author = "Иосиф Дзеранов",
-                    price = 8900.0,
-                    rating = 5.0,
-                    hours = 120,
-                    students = 1678
-                ),
-                Course(
-                    id = 6,
-                    title = "PRO SQL",
-                    summary = "Master problem solving.",
-                    coverUrl = null,
-                    author = "Иосиф Дзеранов",
-                    price = 8900.0,
-                    rating = 5.0,
-                    hours = 120,
-                    students = 1678
+                    id = dto.id,
+                    title = dto.title,
+                    summary = dto.summary,
+                    coverUrl = dto.cover,
+                    author = "Stepik",
+                    price = parsePrice(dto.displayPrice),
+                    rating = 0.0,
+                    hours = (dto.timeToComplete ?: 0) / 3600,
+                    students = dto.learnersCount
                 )
-            )
-        )
+            }
+            Result.success(domainCourses)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    private fun parsePrice(displayPrice: String?): String {
+        if (displayPrice == null || displayPrice.lowercase() == "free") return "free"
+        return displayPrice.replace(Regex("[^0-9.]"), "")
     }
 }
