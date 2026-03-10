@@ -49,7 +49,7 @@ fun CourseCard(
     rating: Double,
     students: Int,
     hours: Int,
-    price: Double,
+    price: String,
     imagePainter: Painter,
     isFavorite: Boolean,
     onFavoriteClick: () -> Unit
@@ -180,7 +180,7 @@ fun CourseCard(
                     .padding(horizontal = 12.dp, vertical = 8.dp)
             ) {
                 Text(
-                    text = price.toInt().toString(),
+                    text = price,
                     style = MaterialTheme.typography.labelLarge
                 )
             }
@@ -196,7 +196,7 @@ private fun CourseCardPreview() {
             title = "PRO SQL",
             imagePainter = painterResource(Res.drawable.course_cover_example),
             author = "Иосиф Дзеранов",
-            price = 8900.0,
+            price = "8900",
             rating = 5.0,
             students = 100,
             hours = 2,
