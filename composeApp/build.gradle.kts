@@ -35,6 +35,9 @@ kotlin {
             implementation(libs.androidx.activity.compose)
 
             implementation(libs.coil.network.okhttp)
+
+            // Ktor
+            implementation(libs.ktor.client.android)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -52,6 +55,16 @@ kotlin {
 
             // Coil
             implementation(libs.coil3.coil.compose)
+
+
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content)
+            implementation(libs.ktor.serialization)
+
+            implementation(libs.ktor.client.logging)
+
+            // Napier
+            implementation(libs.napier)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -59,6 +72,9 @@ kotlin {
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.ios)
         }
     }
 }
